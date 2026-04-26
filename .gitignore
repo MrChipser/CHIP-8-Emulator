@@ -1,0 +1,9 @@
+cmake-build-debug
+SDL
+*.ch8
+*.o
+*.obj
+*.exe
+*.dylib
+*.dll
+*.so
