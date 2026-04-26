@@ -96,7 +96,7 @@ void Chip8::LoadFile(const char* filename) {
     if (fin.is_open()) {
         //getting the size of the file
         const std::streamsize size = fin.tellg();
-        if (size > 4096) {
+        if (size > 4096 - ROM_START_ADDRESS) {
             std::cout << "File too big!" << std::endl;
             std::exit(EXIT_FAILURE);
         }
