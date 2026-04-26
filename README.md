@@ -24,19 +24,21 @@ To build this project you will need:
    ```bash
    ./chip8 <Scale> <Speed> <FilePath>
    ```
-   <Scale> - CHIP-8 is originally 64x32 pixels which is too small to display, this number is a scaler to that (e.g. 10 would make a 640x320 screen)
-   <Speed> - it manipulates the clock speed of the CPU, bigger means faster, you can experiment with this, it changes from game to game
-   <FilePath> - the path of the .ch8 file
+   * Scale - CHIP-8 is originally 64x32 pixels which is too small to display, this number is a scaler to that (e.g. 10 would make a 640x320 screen)
+   * Speed - it manipulates the clock speed of the CPU, bigger means faster, you can experiment with this, it changes from game to game
+   * FilePath - the path of the .ch8 file
 
-##Key Mapping
-CHIP-8    Keyboard
-1 2 3 C   1 2 3 4
-4 5 6 D   Q W E R
-7 8 9 E   A S D F
-A 0 B F   Z X C V
-ESC - Closes the emulator
+## Key Mapping
+| CHIP-8 | Keyboard |
+| :---: | :---: |
+| 1 2 3 C | 1 2 3 4 |
+| 4 5 6 D | Q W E R |
+| 7 8 9 E | A S D F |
+| A 0 B F | Z X C V |
 
-##What I learned
+* **ESC:** Closes the emulator.
+
+## What I learned
 * Low-level memory management and CPU register operations
 * Reading and parsing binary files
 * Integrating SDL2 
