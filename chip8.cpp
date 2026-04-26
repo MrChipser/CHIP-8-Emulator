@@ -96,6 +96,10 @@ void Chip8::LoadFile(const char* filename) {
     if (fin.is_open()) {
         //getting the size of the file
         const std::streamsize size = fin.tellg();
+        if (size > 4096) {
+            std::cout << "File too big!" << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
         //setting the reader back to the beginning of the file
         fin.seekg(0, std::ios_base::beg);
 
@@ -276,7 +280,7 @@ void Chip8::OP_Dxyn() {
 
         for (unsigned int col = 0; col < 8; col++) {
             uint8_t spritePixel = spriteByte & (128u >> col);
-            uint32_t* videoPixel = &video[(yPos+row) * VIDEO_WIDTH + (xPos+col)];
+            uint32_t* videoPixel = &video[((yPos+row) % VIDEO_HEIGHT) * VIDEO_WIDTH + ((xPos+col) % VIDEO_WIDTH)];
 
             if (spritePixel) {
                 //collision
@@ -421,10 +425,4 @@ void Chip8::Cycle() {
 
     //executing the operation using the tables
     ((*this).*(table[(opcode & 0xF000u) >> 12u]))();
-
-    //decrementing timers if they are set
-    if (timerDelay > 0)
-        timerDelay--;
-    if (timerSound > 0)
-        timerSound--;
 }
